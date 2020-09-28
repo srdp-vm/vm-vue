@@ -1,0 +1,193 @@
+<template>
+  <div>
+    <div id="header-fixed" ref="header">购物车({{ items.length }})</div>
+    <div id="header" @click="test">
+      <!-- 购物车说明 -->
+      <span class="title">购物车</span>
+      <span class="count">共{{ items.length }}件商品</span>
+    </div>
+    <Nothing v-if="items.length == 0"></Nothing>
+    <div class="content" v-else>
+      <Item
+        class="item"
+        :item="item"
+        v-for="(item, index) in items"
+        :key="index"
+      ></Item>
+    </div>
+    <div id="footer">
+      <span id="totalprice">￥{{ 55 }}</span>
+      <button id="settleup" @click="settleup">结算</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import Item from "@/components/Item.vue";
+import Nothing from "@/components/Nothing.vue";
+
+export default {
+  name: "Cart",
+  components: {
+    Item,
+    Nothing,
+  },
+  data() {
+    return {
+      // items: [
+      //   {
+      //     name: "雪碧",
+      //     num: "55",
+      //     price: "2.90",
+      //   },
+      //   {
+      //     name: "雪碧",
+      //     num: "55",
+      //     price: "2.90",
+      //   },
+      //   {
+      //     name: "雪碧",
+      //     num: "55",
+      //     price: "2.90",
+      //   },
+      //   {
+      //     name: "雪碧",
+      //     num: "55",
+      //     price: "2.90",
+      //   },
+      //   {
+      //     name: "雪碧",
+      //     num: "55",
+      //     price: "2.90",
+      //   },
+      //   {
+      //     name: "雪碧",
+      //     num: "55",
+      //     price: "2.90",
+      //   },
+      //   {
+      //     name: "雪碧",
+      //     num: "55",
+      //     price: "2.90",
+      //   },
+      // ],
+    };
+  },
+  computed: {
+    items() {
+      return this.$store.state.items;
+    },
+  },
+  methods: {
+    settleup() {
+      this.$router.push("/success");
+    },
+    test() {
+      this.wsSend(
+        JSON.stringify({
+          instruction: "test",
+        })
+      );
+    },
+  },
+  mounted() {
+    window.onscroll = (params) => {
+      let scroll =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      let opacity = 1;
+      if (scroll <= 100) {
+        opacity = scroll / 100;
+      }
+      this.$refs.header.style.opacity = opacity;
+    };
+  },
+};
+</script>
+
+<style scoped>
+#header-fixed {
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  overflow: hidden;
+  background: linear-gradient(to right, #00c3ff, #00bdff, #008fff);
+  opacity: 0;
+}
+
+#header {
+  height: 150px;
+  padding: 10px;
+  background: linear-gradient(to right, #00c3ff, #00bdff, #008fff);
+  margin-bottom: -70px;
+}
+
+#header .title,
+#header .count {
+  display: block;
+  color: #fff;
+}
+
+#header .title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.content {
+  padding: 0 10px;
+}
+
+.content .item + .item {
+  margin-top: 10px;
+}
+
+.content .item:last-child {
+  margin-bottom: 60px;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 8px;
+  width: 100%;
+  z-index: 99;
+  background: #fff;
+  border-top: 1px solid #e6e6e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#footer button {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  background: #00bdff;
+  color: #fff;
+  font-size: 16px;
+  box-shadow: 1px 1px 5px rgb(110, 110, 110);
+}
+
+#footer button:active {
+  background: #008fff;
+}
+
+/*在总价之前加上‘合计’两字*/
+#footer #totalprice::before {
+  content: "合计:";
+  color: #000;
+}
+
+#footer #totalprice {
+  color: #ff8400;
+}
+</style>
