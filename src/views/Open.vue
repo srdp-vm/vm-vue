@@ -13,6 +13,11 @@ export default {
   name: "Open",
   methods: {
     open() {
+      this.wsSend(
+        JSON.stringify({
+          instruction: "open",
+        })
+      );
       this.$router.push("/cart");
     },
   },
