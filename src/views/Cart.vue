@@ -16,7 +16,7 @@
       ></Item>
     </div>
     <div id="footer">
-      <span id="totalprice">￥{{ 55 }}</span>
+      <span id="totalprice">￥{{ totalprice }}</span>
       <button id="settleup" @click="settleup">结算</button>
     </div>
   </div>
@@ -33,49 +33,18 @@ export default {
     Nothing,
   },
   data() {
-    return {
-      // items: [
-      //   {
-      //     name: "雪碧",
-      //     num: "55",
-      //     price: "2.90",
-      //   },
-      //   {
-      //     name: "雪碧",
-      //     num: "55",
-      //     price: "2.90",
-      //   },
-      //   {
-      //     name: "雪碧",
-      //     num: "55",
-      //     price: "2.90",
-      //   },
-      //   {
-      //     name: "雪碧",
-      //     num: "55",
-      //     price: "2.90",
-      //   },
-      //   {
-      //     name: "雪碧",
-      //     num: "55",
-      //     price: "2.90",
-      //   },
-      //   {
-      //     name: "雪碧",
-      //     num: "55",
-      //     price: "2.90",
-      //   },
-      //   {
-      //     name: "雪碧",
-      //     num: "55",
-      //     price: "2.90",
-      //   },
-      // ],
-    };
+    return {};
   },
   computed: {
     items() {
       return this.$store.state.items;
+    },
+    totalprice() {
+      let total = 0;
+      this.items.forEach((element) => {
+        total += element.price * element.num;
+      });
+      return total;
     },
   },
   methods: {
