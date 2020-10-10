@@ -50,9 +50,9 @@ export default {
   methods: {
     getDateNow() {
       var dateNow = new Date();
-      var sNow = " ";
+      var sNow = "";
       sNow += String(dateNow.getFullYear());
-      sNow += String(dateNow.getMonth()+1);
+      sNow += String(dateNow.getMonth() + 1);
       sNow += String(dateNow.getDate());
       sNow += String(dateNow.getHours());
       sNow += String(dateNow.getMinutes());
@@ -66,18 +66,18 @@ export default {
       var price = 50;
       var trade = this.getDateNow();
       var params = {
-        "WIDout_trade_no": trade,
-        "WIDsubject": "支付包支付",
-        "WIDtotal_amount": price,
-        "WIDbody":"雪碧"
-      }
+        WIDout_trade_no: trade,
+        WIDsubject: "支付包支付",
+        WIDtotal_amount: price,
+        WIDbody: "雪碧",
+      };
 
       var form = document.createElement("form");
       //form.action = "http://srdp-vm/VMserver/pay";
       form.action = "http://192.168.43.79:8080/VM3.0/Pay";
       form.method = "post";
       form.style.display = "none";
-      for(var x in params){
+      for (var x in params) {
         var input = document.createElement("input");
         input.name = x;
         input.value = params[x];
