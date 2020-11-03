@@ -1,7 +1,7 @@
 <template>
   <div id="open">
     <div class="btn-wrapper">
-      <button class="btn-open" @click="open">打开</button>
+      <button class="btn-open" @click="open">开门</button>
       <div class="pulse delay-00"></div>
       <div class="pulse delay-03"></div>
     </div>

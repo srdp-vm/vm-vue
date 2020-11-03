@@ -3,7 +3,7 @@
     <div class="main">
       <img class="image" src="../assets/img/success.png" alt="支付成功" />
       <div class="success">支付成功</div>
-      <div class="price">27.8元</div>
+      <div class="price">4.00元</div>
     </div>
     <div class="box detail">
       <div class="container">
@@ -12,20 +12,15 @@
       </div>
       <div class="container">
         <div class="title">交易时间</div>
-        <div class="content" id="order_time">2020-07-16</div>
+        <div class="content" id="order_time">2020-10-26</div>
       </div>
       <div class="container">
         <div class="title">订单详情</div>
         <div class="content" id="order_content">
           <div class="item">
-            <span class="name">可口可乐</span>
-            <span class="num">*5</span>
-            <span class="price">13.9元</span>
-          </div>
-          <div class="item">
-            <span class="name">雪碧</span>
-            <span class="num">*5</span>
-            <span class="price">13.9元</span>
+            <span class="name">农夫山泉</span>
+            <span class="num">*2</span>
+            <span class="price">4.00元</span>
           </div>
         </div>
       </div>

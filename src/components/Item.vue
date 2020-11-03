@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img src="../assets/img/sprite.jpg" height="100px" width="100px" />
+    <img :src="item.imgPath" height="100px" width="100px" />
     <div class="detail">
       <span class="name">{{ item.name }}</span>
       <div class="tail">
