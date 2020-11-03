@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     init() {
-      var url = "ws://192.168.43.172:8080/VM3.0/websocket/phone";
+      var url = "ws://localhost:8080/VM3.0/websocket/phone";
       // 判断当前浏览器是否支持WebSocket
       if ("WebSocket" in window) {
         this.websocket = new WebSocket(url);

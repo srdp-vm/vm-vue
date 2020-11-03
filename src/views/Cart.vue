@@ -60,19 +60,9 @@ export default {
       sNow += String(dateNow.getMilliseconds());
       return sNow;
     },
-    settleup() {
-      var price = this.totalprice;
-      var trade = this.getDateNow();
-      var params = {
-        order_id: trade,
-        subject: "自助售货机",
-        total_amount: price,
-        create_time: "balabala",
-        items: JSON.stringify(this.items),
-      };
-
+    httpPost(url, params) {
       var form = document.createElement("form");
-      form.action = "http://192.168.43.172:8080/VM3.0/Pay";
+      form.action = url;
       form.method = "post";
       form.style.display = "none";
       for (var x in params) {
@@ -84,6 +74,21 @@ export default {
       document.body.appendChild(form);
       //提交form
       form.submit();
+    },
+    settleup() {
+      var price = this.totalprice;
+      var trade = this.getDateNow();
+      var params = {
+        order_id: trade,
+        subject: "自助售货机",
+        total_amount: price,
+        create_time: "balabala",
+        items: this.items,
+      };
+
+      this.httpPost("http://localhost:8080/VM3.0/Pay", {
+        jsondata: JSON.stringify(params),
+      });
     },
     test() {
       this.wsSend(

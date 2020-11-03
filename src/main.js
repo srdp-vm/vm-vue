@@ -8,6 +8,7 @@ import Websocket from "@/components/Websocket";
 Vue.config.productionTip = false
 Vue.component("Websocket", Websocket)
 
+
 router.beforeEach((to, from, next) => {
   if (next.name != 'Cart') {
     window.onscroll = null;
@@ -24,7 +25,4 @@ new Vue({
   render: function (h) {
     return h(App)
   },
-  sendMessage() {
-    console.log('helloworld');
-  }
 }).$mount('#app')
