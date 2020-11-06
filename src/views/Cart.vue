@@ -60,6 +60,17 @@ export default {
       sNow += String(dateNow.getMilliseconds());
       return sNow;
     },
+    getCreateTime() {
+      var date = new Date();
+      var timeString = "";
+      timeString += String(date.getFullYear()) + "-";
+      timeString += String(date.getMonth() + 1) + "-";
+      timeString += String(date.getDate()) + " ";
+      timeString += String(date.getHours()) + ":";
+      timeString += String(date.getMinutes()) + ":";
+      timeString += String(date.getSeconds());
+      return timeString;
+    },
     httpPost(url, params) {
       var form = document.createElement("form");
       form.action = url;
@@ -78,11 +89,12 @@ export default {
     settleup() {
       var price = this.totalprice;
       var trade = this.getDateNow();
+      var time = this.getCreateTime();
       var params = {
         order_id: trade,
         subject: "自助售货机",
         total_amount: price,
-        create_time: "balabala",
+        create_time: time,
         items: this.items,
       };
 
